@@ -34,6 +34,8 @@ class mondayMysql():
     def connect(self):
         try:
             db = pymysql.connect(self.host, self.user, self.password, self.database, charset='utf8')  # charset='utf-8' 不然python3输出的是乱码
+        except Exception as e:
+            log.error(e)
 
     @func_timer
     def execute(self):
