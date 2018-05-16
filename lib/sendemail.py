@@ -9,16 +9,13 @@
 # @time: 2018/5/16 15:32
 # @python：python3.6
 
-
-import config
-
-# ###########################################################
-# 发送普通html邮件，不带附件不带其他信息，不带签名。
-from email import encoders
 from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
 import smtplib
+
+from mondayLog import MondayLogger
+log = MondayLogger('sendemail')
 
 class sendEmail():
     __doc__="""
@@ -55,16 +52,19 @@ se.close()
 
     def login(self):
         try:
+            log.info('connect email with smtp, from address: %s' % self.from_addr)
             server = smtplib.SMTP_SSL(self.smtp_server, 465)
             server.set_debuglevel(1)
             server.login(self.from_addr, self.password)
+            log.info('%s login success!' % self.from_addr)
         except Exception as e:
-            print(e)
+            log.error(e)
         return server
 
     def send(self):
         self.server  = self.login()
         self.server.sendmail(self.from_addr, self.to_addrs, self.msg.as_string())
+        log.info('send email from address %s to address %s …' % (self.from_addr, self.to_addrs[0]))
         return True
 
     def set_msg(self, from_name, subject, ):
@@ -75,6 +75,7 @@ se.close()
 
     def close(self):
         self.server.quit()
+        log.info('email:%s quit successful!' % self.from_addr)
 
     def __exit__(self):
-        self.server.quit()
+        self.close()

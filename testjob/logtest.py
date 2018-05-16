@@ -11,7 +11,7 @@
 
 #导入封装的日志记录模块
 from mondayLog import MondayLogger
-log = MondayLogger()
+log = MondayLogger('logtest')
 
 # from mondayLog import log
 #输出日志

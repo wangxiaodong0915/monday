@@ -26,7 +26,8 @@ class MondayLogger(logging.Logger):
         # 日志文件名
         if filename is None:
             filename = 'pt_%s.log' % str(date.today())
-        self.filename = os.path.join(MONDAY_LOG,filename)
+        # self.filename = os.path.join(MONDAY_LOG, filename) #没有相关的东西
+        self.filename = os.path.join(MONDAY_LOG,filename +'_%s.log' % str(date.today()))
 
         # 创建一个handler，用于写入日志文件 (每天生成1个，保留30天的日志)
         fh = logging.handlers.TimedRotatingFileHandler(self.filename, 'D', 1, 30)
