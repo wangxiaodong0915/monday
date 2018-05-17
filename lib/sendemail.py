@@ -65,7 +65,7 @@ se.close()
             log.error(e)
 
     def send(self):
-        self.server  = self.login()
+        self.login()
         self.server.sendmail(self.from_addr, self.to_addrs, self.msg.as_string())
         log.info('send email from address %s to address %s …' % (self.from_addr, self.to_addrs[0]))
         return True
