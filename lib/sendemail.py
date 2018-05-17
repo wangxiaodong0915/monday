@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 # !/usr/bin/python3
-# @version: V1.0
+# @version: V1.1
 # @author: 飞翔的卡夫卡
 # @contact: 592901924@qq.com
 # @site: 
@@ -8,6 +8,9 @@
 # @file: sendemail.py.py
 # @time: 2018/5/16 15:32
 # @python：python3.6
+
+# V1.0 定义sendemail.py  为发送邮件的公用类
+# V1.1 修改了登录机制,把server 修改为 self.server 内部对象
 
 from email.header import Header
 from email.mime.text import MIMEText
@@ -53,16 +56,15 @@ se.close()
     def login(self):
         try:
             log.info('connect email with smtp, from address: %s' % self.from_addr)
-            server = smtplib.SMTP_SSL(self.smtp_server, 465)
-            server.set_debuglevel(1)
-            server.login(self.from_addr, self.password)
+            self.server = smtplib.SMTP_SSL(self.smtp_server, 465)
+            self.server.set_debuglevel(1)
+            self.server.login(self.from_addr, self.password)
             log.info('%s login success!' % self.from_addr)
         except Exception as e:
             log.error(e)
-        return server
 
     def send(self):
-        self.server  = self.login()
+        # self.server  = self.login()
         self.server.sendmail(self.from_addr, self.to_addrs, self.msg.as_string())
         log.info('send email from address %s to address %s …' % (self.from_addr, self.to_addrs[0]))
         return True
