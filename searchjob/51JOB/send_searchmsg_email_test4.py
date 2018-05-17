@@ -32,7 +32,9 @@ sql = """select
  Workplace,
  Salary,
  Posttime,
- Experience
+ Experience,
+ xueli,
+ number
  from scrapy.qcwy"""
 
 # 执行SQL语句并获取结果
@@ -45,21 +47,59 @@ import sendemail
 #拼装msg_str
 log.info('Assembling msg_str ---- START ----')
 msg_str = """"""
-msg_str += """***Positionname***\t***Companyname***\t***Workplace***\t***Salary***\t***Posttime***\t***Experience***\n"""
+msg_str += """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>msg from 51JOB at {{ today }}</title>
+</head>
+<body>
+    <div>
+        <table border="1" bgcolor="#66CCCC">
+            <tr bgcolor="#33CCFF">
+                <td><h3>职务名称</h3></td>
+                <td><h3>公司名称</h3></td>
+                <td><h3>薪资福利</h3></td>
+                <td><h3>工作地点</h3></td>
+                <td><h3>发布时间</h3></td>
+                <td><h3>工作经验</h3></td>
+                <td><h3>学历要求</h3></td>
+                <td><h3>招聘人数</h3></td>
+            </tr>"""
 count = 0
 for row in results:
-    msg_str += """%20s\t%20s\t%10s\t%20s\t%10s\t%10s\n""" % (row[0], row[1], row[2], row[3], row[4], row[5]) # (Positionname, Companyname, Workplace, Salary, Posttime, Experience)
+    msg_str += """
+            <tr>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+            </tr>
+    """ % (row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7])
     count += 1
-msg_conut = """总计岗位：%d\n""" % count
+msg_str += """
+        </table>
+    </div>
+</body>
+</html>
+"""
+
 log.info('Assembling msg_str ---- SUCCESS ----')
 # 创建sendEmail类
 se = sendemail.sendEmail(
-    msg_conut + msg_str,
+    msg_str,
     config.mail['qq_email_wxd']['email'],
     config.mail['qq_email_wxd']['password'],
-    config.sendlist['51job_list']['userlist'].split(','))
+    config.sendlist['51job_list']['userlist'].split(','),
+    config.mail['qq_email_wxd']['smtp'],
+    465,
+    'html')
 # 格式化发送的表头
-se.set_msg("王晓东", "[sendEmail]sendEmail V1.0 Test 1st")
+se.set_msg("王晓东", "[51JOB msg count: %d]sendEmail V1.0 Test 4st" % count)
 # 进行发送
 # se.login()
 se.send()

@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 # !/usr/bin/python3
-# @version: V1.1
+# @version: V1.2
 # @author: 飞翔的卡夫卡
 # @contact: 592901924@qq.com
 # @site: 
@@ -11,6 +11,7 @@
 
 # V1.0 定义sendemail.py  为发送邮件的公用类
 # V1.1 修改了登录机制,把server 修改为 self.server 内部对象
+# V1.2 self.send() 中先执行self.login()，减少调用的麻烦。
 
 from email.header import Header
 from email.mime.text import MIMEText
@@ -64,7 +65,7 @@ se.close()
             log.error(e)
 
     def send(self):
-        # self.server  = self.login()
+        self.server  = self.login()
         self.server.sendmail(self.from_addr, self.to_addrs, self.msg.as_string())
         log.info('send email from address %s to address %s …' % (self.from_addr, self.to_addrs[0]))
         return True
