@@ -17,10 +17,15 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
 import smtplib
+import config
 
 from mondayLog import MondayLogger
 log = MondayLogger('sendemail')
 
+FROM_ADDR = config.mail['qq_email_wxd']['email']
+PASSWORD = config.mail['qq_email_wxd']['password']
+SMTP = config.mail['qq_email_wxd']['smtp']
+STMP_PORT = config.mail['qq_email_wxd']['smtp_port']
 class sendEmail():
     __doc__="""
 待补充！！！ 20180516
@@ -41,7 +46,7 @@ se.send()
 se.close()
     """
 
-    def __init__(self, msg_str, from_addr, password, to_addrs, smtp_server='smtp.qq.com', smtp_port=465, msg_type='plain'):
+    def __init__(self, msg_str, to_addrs, msg_type='plain',from_addr=FROM_ADDR, password=PASSWORD, smtp_server=SMTP, smtp_port=STMP_PORT):
         self.msg_str = msg_str
         self.from_addr = from_addr
         self.password = password

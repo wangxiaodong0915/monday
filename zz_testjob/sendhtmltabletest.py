@@ -42,12 +42,8 @@ html = """
 # 创建sendEmail类
 se = sendemail.sendEmail(
     html,
-    '592901924@qq.com',
-    '03733344176b',
-    ['592901924@qq.com'],
-    'smtp.qq.com',
-    465,
-    'html'
+    "592901924@qq.com",
+    "html"
 )
 # 格式化发送的表头
 se.set_msg("王晓东", "[sendEmail]sendEmail about html table V1.1 Test 2nd")

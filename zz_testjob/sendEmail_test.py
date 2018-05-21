@@ -14,9 +14,8 @@ import sendemail
 # 创建sendEmail类
 se = sendemail.sendEmail(
     'hello World!',
-    '592901924@qq.com',
-    '03733344176b',
-    ['592901924@qq.com'])
+    '592901924@qq.com'
+)
 # 格式化发送的表头
 se.set_msg("王晓东", "[sendEmail]sendEmail V1.0 Test 1st")
 # 进行发送
