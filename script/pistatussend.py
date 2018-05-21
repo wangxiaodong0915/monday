@@ -78,8 +78,8 @@ log.info('Get swap memory usage,successful!')
 # print(disk_partitions())
 # print(disk_partitions()[0].device) 获取磁盘清单，包括逻辑盘和物理盘
 device_list = []
-for index in range(0,len(disk_partitions())):
-    device_list.append(disk_partitions()[index].device)
+for index in range(0,len(disk_partitions(all=False))):
+    device_list.append(disk_partitions(all=False)[index].device)
 log.info('Get disk list msg,successful!')
 
 # print(disk_usage(disk_partitions()[0].device).total) # 获取每个磁盘路径或者逻辑盘的总空间、使用情况、使用比例
