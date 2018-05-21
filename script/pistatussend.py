@@ -230,9 +230,9 @@ se = sendemail.sendEmail(
 )
 # 格式化发送的表头
 label = ""
-if memory_status == "red" or mem_percent == "red" or swap_status == "red":
+if memory_status == "red" or disk_status == "red" or swap_status == "red":
     label = "Red"
-elif (memory_status != "red" and mem_percent != "red" and swap_status != "red") and (memory_status == "yellow" or mem_percent == "yellow" or swap_status == "yellow"):
+elif (memory_status != "red" and disk_status != "red" and swap_status != "red") and (memory_status == "yellow" or disk_status == "yellow" or swap_status == "yellow"):
     label = "Yellow"
 else:
     lable = "Green"
