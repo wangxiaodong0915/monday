@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# !/usr/bin/python3
+#!/usr/bin/python3
 # @version: V
 # @author: 飞翔的卡夫卡
 # @contact: 592901924@qq.com
