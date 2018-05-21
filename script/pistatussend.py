@@ -230,6 +230,7 @@ se = sendemail.sendEmail(
 )
 # 格式化发送的表头
 label = ""
+log.debug(memory_status, disk_status, swap_status)
 if memory_status == "red" or disk_status == "red" or swap_status == "red": # 包含19种情况
     label = "Red"
 elif (memory_status != "red" and disk_status != "red" and swap_status != "red") and (memory_status == "yellow" or disk_status == "yellow" or swap_status == "yellow"): #
