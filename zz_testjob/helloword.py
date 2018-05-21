@@ -1,4 +1,4 @@
-#!/usr/bin/python env
+#!/usr/bin/python3
 
 __author__ = 'wangxiaodong'
 __filename__ = 'helloword'
