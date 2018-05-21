@@ -89,14 +89,14 @@ disk_status = ""
 disk_status_path = ""
 for device in device_list:
     disk_part = disk_usage(device)
-    status = ''
+    status = ""
     if float(disk_part.percent) > 85:
-        status = 'red'
+        status = "red"
     elif float(disk_part.percent) > 50 and float(disk_part.percent) <= 85:
-        status = 'yellow'
+        status = "yellow"
     else:
-        status = 'green'
-    if status == 'red':
+        status = "green"
+    if status == "red":
         disk_status = "red"
         disk_status_path = device + " percent:" + str(disk_part.percent) + "%"
     elif disk_status != "red" and status == "yellow":
@@ -112,20 +112,20 @@ log.info("******* Start to decide server status *******")
 # memory percent >= 80%  红级别；80% >= memory percent > 60%  黄级别；else 绿级别
 memory_status = ""
 if float(mem_percent) >= 80:
-    memory_status = 'red'
+    memory_status = "red"
 elif float(mem_percent) < 80 and float(mem_percent) >= 60:
-    memory_status = 'yellow'
+    memory_status = "yellow"
 else:
-    memory_status = 'green'
+    memory_status = "green"
 log.info("momory status is %s" % memory_status)
 
 swap_status = ""
 if float(swap_percent) >= 80:
-    swap_status = 'red'
+    swap_status = "red"
 elif float(swap_percent) < 80 and float(swap_percent) >= 60:
-    swap_status = 'yellow'
+    swap_status = "yellow"
 else:
-    swap_status = 'green'
+    swap_status = "green"
 log.info("******* END to decide server status *******")
 log.info('******* Start to assembly HTML *******')
 msg_str = """
@@ -237,6 +237,7 @@ elif (memory_status != "red" and disk_status != "red" and swap_status != "red") 
     label = "Yellow"
 elif memory_status == "green" and disk_status == "green" and swap_status == "green":
     lable = "Green"
+print(label)
 se.set_msg("王晓东", "[%s-%s]PI server status is %s !" % (label, str(date.today()), label.upper()))
 # 登录邮件
 se.login()
