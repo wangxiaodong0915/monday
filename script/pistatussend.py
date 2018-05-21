@@ -230,14 +230,12 @@ se = sendemail.sendEmail(
 )
 # 格式化发送的表头
 label = ""
-print(str(memory_status), str(disk_status), str(swap_status))
-if str(memory_status) == "red" or str(disk_status) == "red" or str(swap_status) == "red": # 包含19种情况
+if memory_status == "red" or disk_status == "red" or swap_status == "red": # 包含19种情况
     label = "Red"
-elif (str(memory_status) != "red" and str(disk_status) != "red" and str(swap_status) != "red") and (str(memory_status) == "yellow" or str(disk_status) == "yellow" or str(swap_status) == "yellow"): #
+elif (memory_status != "red" and disk_status != "red" and swap_status != "red") and (memory_status == "yellow" or disk_status == "yellow" or swap_status == "yellow"): #
     label = "Yellow"
-elif str(memory_status) == "green" and str(disk_status) == "green" and str(swap_status) == "green":
-    lable = "Green"
-print("-------------------------------:" + label)
+elif memory_status == "green" and disk_status == "green" and swap_status == "green":
+    label = "Green"
 se.set_msg("王晓东", "[%s-%s]PI server status is %s !" % (label, str(date.today()), label.upper()))
 # 登录邮件
 se.login()
