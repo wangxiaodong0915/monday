@@ -1,0 +1,1 @@
+/usr/bin/python3 /home/monday_uat/monday/script/pistatussend.py
