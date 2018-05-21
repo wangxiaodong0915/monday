@@ -15,3 +15,6 @@ __filename__ = 'helloword'
 #   usage:
 
 print("hello world!!!")
+
+import config
+print(config.config["log"]["level"])
