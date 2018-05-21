@@ -18,3 +18,5 @@ print("hello world!!!")
 
 import config
 print(config.config["log"]["level"])
+
+print("123456789")
