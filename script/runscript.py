@@ -20,7 +20,7 @@ from mondayLog import MondayLogger
 log = MondayLogger('runscript')
 
 MONDAY_PATH = os.getenv('MONDAY_PATH')
-os.chdir(MONDAY_PATH,'script')
+os.chdir(os.path.join(MONDAY_PATH,'script'))
 while 1:
     log.info("python3 pistatussend.py")
     os.system('python3 pistatussend.py')
