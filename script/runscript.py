@@ -1,4 +1,5 @@
 #!/usr/bin/python env
+from time import sleep
 
 __author__ = 'wangxiaodong'
 __filename__ = 'runscript'
@@ -25,4 +26,4 @@ while 1:
     log.info("python3 pistatussend.py")
     os.system('python3 pistatussend.py')
     log.info('sleep 1 hours.')
-    os.sleep(3600)
+    sleep(3600)
