@@ -65,8 +65,8 @@ import time
 
 if __name__ == "__main__":
     while 1:
-        if date.weekday(date.today()) == 3:
-            if datetime.now().hour == 14:
+        if date.weekday(date.today()) == 4:
+            if datetime.now().hour == 17:
                 result = getclassmsg()
                 if result is True:
                     log.info("sleep 86400")
