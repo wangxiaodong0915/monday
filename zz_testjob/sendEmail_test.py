@@ -18,8 +18,6 @@ se = sendemail.sendEmail(
 )
 # 格式化发送的表头
 se.set_msg("王晓东", "[sendEmail]sendEmail V1.0 Test 1st")
-# 进行发送
-se.login()
 se.send()
 # 发送完成退出
 se.close()

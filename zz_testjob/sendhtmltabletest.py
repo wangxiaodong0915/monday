@@ -47,8 +47,6 @@ se = sendemail.sendEmail(
 )
 # 格式化发送的表头
 se.set_msg("王晓东", "[sendEmail]sendEmail about html table V1.1 Test 2nd")
-# 登录邮件
-se.login()
 # 进行发送
 se.send()
 # 发送完成退出
