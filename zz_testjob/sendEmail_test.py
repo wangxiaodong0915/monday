@@ -17,7 +17,7 @@ se = sendemail.sendEmail(
     '592901924@qq.com'
 )
 # 格式化发送的表头
-se.set_msg("王晓东", "[sendEmail]sendEmail V1.0 Test 1st")
+se.set_msg("见你就上", "[sendEmail]sendEmail V1.0 Test 1st")
 se.send()
 # 发送完成退出
 se.close()

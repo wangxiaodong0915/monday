@@ -22,10 +22,10 @@ import config
 from mondayLog import MondayLogger
 log = MondayLogger('sendemail')
 
-FROM_ADDR = config.mail['qq_email_wxd']['email']
-PASSWORD = config.mail['qq_email_wxd']['password']
-SMTP = config.mail['qq_email_wxd']['smtp']
-STMP_PORT = config.mail['qq_email_wxd']['smtp_port']
+FROM_ADDR = config.mail['qq_email_monday']['email']
+PASSWORD = config.mail['qq_email_monday']['password']
+SMTP = config.mail['qq_email_monday']['smtp']
+STMP_PORT = config.mail['qq_email_monday']['smtp_port']
 class sendEmail():
     __doc__="""
 待补充！！！ 20180516
