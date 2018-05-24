@@ -60,16 +60,22 @@ def getclassmsg():
         log.error(e)
         return False
 
-from datetime import date,time,datetime
+from datetime import date,datetime
+import time
 
 if __name__ == "__main__":
     while 1:
-        if date.weekday(date.today()) == 4:
-            if datetime.now().hour == 17:
+        if date.weekday(date.today()) == 3:
+            if datetime.now().hour == 14:
                 result = getclassmsg()
-                if result is False:
+                if result is True:
+                    log.info("sleep 86400")
+                    time.sleep(86400)
+                else:
                     continue
             else:
+                log.info("sleep 3600")
                 time.sleep(3600)
         else:
+            log.info("sleep 86400")
             time.sleep(86400)
