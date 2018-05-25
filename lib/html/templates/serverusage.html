@@ -7,6 +7,7 @@
 <body>
 	<table border="0" align="left"  width="75%" >
 
+		<tr>
 			<td>
 			   <!-- <div>   bgcolor="#66CCCC" -->
 			        <table border="1"  align="center" width="85%">
@@ -19,9 +20,9 @@
 			                <td><h3>Disk status</h3></td>
 			            </tr>
 			            <tr>
-			                <td bgcolor="green">40%</td>
-			                <td bgcolor="red">90%</td>
-			                <td bgcolor="yellow">79%</td>
+			                <td bgcolor="{{ memory_status }}">{{ mem_percent }}%</td>
+			                <td bgcolor="{{ swap_status }}">{{ swap_percent }}%</td>
+			                <td bgcolor="{{ disk_status }}">{{ disk_status_path }}</td>
 			            </tr>
 			        </table>
 			  </td>
@@ -38,9 +39,9 @@
 			                <td><h3>使用百分比</h3></td>
 			            </tr>
 			            <tr>
-			                <td>8000MB</td>
-			                <td>3000MB</td>
-			                <td bgcolor="green">37.5%</td>
+			                <td>{{ mem_total }}MB</td>
+			                <td>{{ mem_use }}MB</td>
+			                <td bgcolor="{{ memory_status }}">{{ mem_percent }}%</td>
 			            </tr>
 			        </table>
 			  </td>
@@ -58,9 +59,9 @@
 			                <td><h3>使用百分比</h3></td>
 			            </tr>
 			            <tr>
-			                <td>8000MB</td>
-			                <td>3000MB</td>
-			                <td bgcolor="green">37.5%</td>
+			                <td>{{ swap_total }}MB</td>
+			                <td>{{ swap_used }}MB</td>
+			                <td bgcolor="{{ swap_status }}">{{ swap_percent }}%</td>
 			            </tr>
 			        </table>
 			</td>
@@ -75,12 +76,14 @@
 			                <td><h3>已用量</h3></td>
 			                <td><h3>使用百分比</h3></td>
 			            </tr>
+						{% for device in device_used %}
 			            <tr>
-			                <td>C://</td>
-			                <td>8000MB</td>
-			                <td>3000MB</td>
-			                <td bgcolor="green">37.5%</td>
+			                <td>{{ device }}</td>
+			                <td>{{ device_used[device][0] }}MB</td>
+			                <td>{{ device_used[device][1] }}MB</td>
+			                <td bgcolor="{{ device_used[device][3] }}">{{ device_used[device][2] }}%</td>
 			            </tr>
+						{% endfor %}
 			        </table>
 			   <!--  </div>-->
   </td>
