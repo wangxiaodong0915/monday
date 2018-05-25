@@ -66,16 +66,19 @@ import time
 if __name__ == "__main__":
     while 1:
         if date.weekday(date.today()) == 4:
-            if datetime.now().hour == 17:
+            if datetime.now().hour == 20:
                 result = getclassmsg()
                 if result is True:
-                    log.info("sleep 86400")
-                    time.sleep(86400)
+                    log.info("sleep 5*86400")
+                    time.sleep(5*86400)
                 else:
                     continue
             else:
                 log.info("sleep 3600")
                 time.sleep(3600)
         else:
-            log.info("sleep 86400")
-            time.sleep(86400)
+            while 1:
+                log.info("sleep 3600")
+                time.sleep(3600)
+                if  date.weekday(date.today()) == 4:
+                    break
