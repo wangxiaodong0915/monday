@@ -29,3 +29,9 @@ sendlist_file = (os.path.join(MONDAY_PATH,'conf','send_list.ini'),
                 os.path.join(MONDAY_PATH,'conf','send_list.custom.ini') )
 sendlist = configparser.ConfigParser()
 sendlist.read(sendlist_file)
+
+# MONDAY_PATH/conf/oracle.ini
+oracle_file = (os.path.join(MONDAY_PATH,'conf','oracle.ini'),
+                os.path.join(MONDAY_PATH,'conf','oracle.custom.ini') )
+oracle = configparser.ConfigParser()
+oracle.read(oracle_file)
