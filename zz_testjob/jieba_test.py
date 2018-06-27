@@ -76,5 +76,4 @@ print('*' * 60)
 
 from jieba.analyse import ChineseAnalyzer
 
-
 analyzer = ChineseAnalyzer()
